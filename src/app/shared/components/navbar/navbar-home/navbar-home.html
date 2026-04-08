@@ -1,0 +1,110 @@
+<nav class="bg-neutral-primary fixed w-full z-20 top-0 inset-s-0 border-b border-default">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1">
+    <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Posts</span>
+    <div
+      class="relative flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse border border-slate-200 rounded-full py-1 px-2 bg-slate-50"
+    >
+      <img class="w-8 h-8 rounded-full" [src]="listPorofil.photo" [alt]="listPorofil.name" />
+
+      <h2 class="font-bold text-xs ms-1 text-slate-600">{{ listPorofil.name }}</h2>
+      <button
+        (click)="toggen()"
+        type="button"
+        class="ms-2 flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary cursor-pointer"
+      >
+        <i class="fa-solid fa-align-justify"></i>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div
+        [class.hidden]="isHidden"
+        class="z-50 absolute top-8 right-8 bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
+      >
+        <div class="px-4 py-3 text-sm border-b border-default">
+          <span class="block text-heading font-bold">{{ listPorofil.name }}</span>
+          <span class="block text-body truncate">{{ listPorofil.email }}</span>
+        </div>
+        <ul class="p-2 text-sm text-body font-medium" aria-labelledby="user-menu-button">
+          <li>
+            <a
+              routerLink="/profil"
+              class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+              ><i class="fa-regular fa-user"></i> profile</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/setting"
+              class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+              ><i class="fa-solid fa-gear"></i> Setting</a
+            >
+          </li>
+          <li class="border-t-2 border-t-slate-200">
+            <button
+              (click)="Logout()"
+              class="inline-flex items-center w-full p-2 hover:bg-red-100 hover:text-red-800 rounded text-red-600"
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+      <button
+        data-collapse-toggle="navbar-user"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+        aria-controls="navbar-user"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-6 h-6"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+            d="M5 7h14M5 12h14M5 17h14"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 border border-slate-200 rounded-2xl bg-slate-50/90 p-1 sm:p-3"
+      id="navbar-user"
+    >
+      <ul
+        class="font-bold flex flex-col p-4 md:p-0 mt-4 border rounded-base md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 text-[13px]"
+      >
+        <li>
+          <a
+            routerLink="/home"
+            class="block py-2 px-3 text-white bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0 hover:cursor-pointer"
+            aria-current="page"
+            ><i class="fa-regular fa-house"></i> Feed</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/profil"
+            class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent hover:cursor-pointer"
+            ><i class="fa-regular fa-user"></i> Profile</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/Notifications"
+            class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+            ><i class="fa-regular fa-comment"></i> Notifications</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

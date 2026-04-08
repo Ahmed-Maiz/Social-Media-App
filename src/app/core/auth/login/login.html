@@ -1,0 +1,211 @@
+<section>
+  <div class="mx-auto w-full max-w-107.5 me-60">
+    <div class="mb-4 text-center lg:hidden">
+      <h2 class="text-3xl font-extrabold tracking-tight text-[#00289d]">Route Posts</h2>
+
+      <p class="mt-1 text-base font-medium leading-snug text-slate-700">
+        Connect with friends and the world around you on Route Posts.
+      </p>
+    </div>
+
+    <div class="rounded-2xl bg-white p-4 sm:p-6">
+      <app-navbar></app-navbar>
+
+      <h2 class="text-2xl font-extrabold text-slate-900">Log in to Route Posts</h2>
+
+      <p class="mt-1 text-sm text-slate-500">Log in and continue your social journey.</p>
+
+      <form [formGroup]="loginForms" (ngSubmit)="isLogin()">
+        <div>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 inset-s-0 text-slate-500 flex items-center ps-3 pointer-events-none"
+            >
+              <i class="fa-regular fa-user"></i>
+            </div>
+
+            <input
+              formControlName="email"
+              type="email"
+              id="input-group-1"
+              class="mt-4 block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+              placeholder="Email or username"
+            />
+          </div>
+
+          @if (loginForms.get('email')?.errors && loginForms.get('email')?.touched) {
+            <div
+              class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+              role="alert"
+            >
+              <svg
+                class="w-4 h-4 me-2 shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+
+              <span class="sr-only">Danger</span>
+
+              <div>
+                <span class="font-medium">Ensure that these requirements are met:</span>
+
+                <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                  @if (loginForms.get('email')?.getError('required')) {
+                    <li>Email is required</li>
+                  }
+
+                  @if (loginForms.get('email')?.getError('email')) {
+                    <li>At least @ Email</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 inset-s-0 text-slate-500 flex items-center ps-3 pointer-events-none"
+            >
+              <i class="fa-solid fa-key"></i>
+            </div>
+
+            <input
+              formControlName="password"
+              type="password"
+              id="input-group-1"
+              class="my-5 block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+              placeholder="Password"
+            />
+          </div>
+
+          @if (loginForms.get('password')?.errors && loginForms.get('password')?.touched) {
+            <div
+              class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+              role="alert"
+            >
+              <svg
+                class="w-4 h-4 me-2 shrink-0"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+
+              <span class="sr-only">Danger</span>
+
+              <div>
+                <span class="font-medium">Ensure that these requirements are met:</span>
+
+                <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+                  @if (loginForms.get('password')?.getError('required')) {
+                    <li>Email is required</li>
+                  }
+
+                  @if (loginForms.get('password')?.getError('password')) {
+                    <li>At least @ Email</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          }
+        </div>
+
+        @if (messageError) {
+          <div
+            class="flex items-start sm:items-center p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+            role="alert"
+          >
+            <svg
+              class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+
+            <p>{{ messageError }}</p>
+          </div>
+        }
+
+        @if (messageNext) {
+          <div
+            class="flex items-start sm:items-center p-4 mb-4 text-sm text-fg-success-strong rounded-base bg-success-soft border border-success-subtle"
+            role="alert"
+          >
+            <svg
+              class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+
+            <p>{{ messageNext }}</p>
+          </div>
+        }
+
+        <button
+          type="submit"
+          class="w-full text-center items-center text-white bg-[#00298d] hover:bg-[#001f6b] box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-base px-4 py-2.5 focus:outline-none"
+        >
+          Log in Create New Account
+
+          @if (isShow) {
+            <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+          }
+        </button>
+
+        <button
+          type="button"
+          class="mt-4 mx-auto w-full text-sm font-semibold text-[#00298d] transition hover:underline"
+        >
+          Forgot password?
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

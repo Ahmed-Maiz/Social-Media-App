@@ -1,0 +1,150 @@
+<section>
+  @if (DivVisible) {
+    @for (comment of listComments; track $index) {
+      <div>
+        <div class="">
+          <div class="flex">
+            <div class="size-10 rounded-full overflow-hidden">
+              <img
+                class="w-full"
+                [src]="comment.commentCreator.photo"
+                [alt]="comment.commentCreator.name"
+              />
+            </div>
+            <div
+              class="w-full rounded-2xl bg-slate-50 p-4 px-4 mb-4 border border-slate-200 py-2 ms-2"
+            >
+              <p class="mb-2 text-[11px] uppercase font-bold text-slate-500">TOp commend</p>
+              <div class="bg-white rounded-2xl px-3 py-2">
+                <p class="text-xs font-bold text-slate-900">{{ comment.commentCreator.name }}</p>
+                <div class="hidden">
+                  <span class="text-xs text-slate-500">{{ comment.commentCreator.username }}</span>
+                  <span class="text-xs text-slate-500"> .4h</span>
+                </div>
+                <p class="text-xs text-slate-800 whitespace-pre-wrap mt-1">{{ comment.content }}</p>
+              </div>
+              <button
+                class="mt-2 text-xs font-bold text-[#1877f2] hover:underline"
+                (click)="toggleDivs()"
+              >
+                view all coments
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    @for (comment of listCommentss; track $index) {
+      <div>
+        <div class="">
+          <div class="flex">
+            <div class="size-10 rounded-full overflow-hidden">
+              <img
+                class="w-full"
+                [src]="comment.commentCreator.photo"
+                [alt]="comment.commentCreator.name"
+              />
+            </div>
+            <div class="rounded-2xl bg-slate-50 p-4 px-4 mb-4 border border-slate-200 py-2 ms-2">
+              <div class="rounded-2xl px-3 py-2">
+                <p class="text-xs font-bold text-slate-900">{{ comment.commentCreator.name }}</p>
+                <div class="">
+                  <span class="text-xs text-slate-500">{{ comment.commentCreator.username }}</span>
+                  <span class="text-xs text-slate-500"> .4h</span>
+                </div>
+                <p class="text-xs text-slate-800 whitespace-pre-wrap mt-1">{{ comment.content }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  }
+
+  <form (submit)="createData(postId, $event)">
+    <label for="chat" class="sr-only">Your message</label>
+    <div class="flex items-center px-3 py-2 rounded-base bg-neutral-secondary-soft">
+      <button
+        type="button"
+        class="p-2 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-tertiary-medium"
+      >
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 8v8a5 5 0 1 0 10 0V6.5a3.5 3.5 0 1 0-7 0V15a2 2 0 0 0 4 0V8"
+          />
+        </svg>
+        <span class="sr-only">Attach file</span>
+      </button>
+      <button
+        type="button"
+        class="p-2 text-body rounded-sm cursor-pointer hover:text-heading hover:bg-neutral-tertiary-medium"
+      >
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M16 18H8l2.5-6 2 4 1.5-2 2 4Zm-1-8.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
+          />
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 3v4a1 1 0 0 1-1 1H5m14-4v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1ZM8 18h8l-2-4-1.5 2-2-4L8 18Zm7-8.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
+          />
+        </svg>
+        <span class="sr-only">Upload image</span>
+      </button>
+      <textarea
+        [formControl]="commentForm"
+        id="chat"
+        rows="1"
+        class="mx-4 bg-neutral-primary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 placeholder:text-body"
+        placeholder="Your message..."
+      ></textarea>
+      <button
+        type="submit"
+        class="inline-flex justify-center p-2 text-fg-brand rounded-full cursor-pointer hover:bg-brand-softer"
+      >
+        <svg
+          class="w-6 h-6 rotate-90 rtl:-rotate-90"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m12 18-7 3 7-18 7 18-7-3Zm0 0v-5"
+          />
+        </svg>
+        <span class="sr-only">Send message</span>
+      </button>
+    </div>
+  </form>
+</section>

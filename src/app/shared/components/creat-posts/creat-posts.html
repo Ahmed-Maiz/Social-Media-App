@@ -1,0 +1,48 @@
+<main>
+  <section>
+    <div class="rounded-2xl border border-slate-200 p-4 bg-white shadow-sm">
+      <div class="flex items-center gap-2.5">
+        <img class="w-10 h-10 rounded-full" [src]="profilList.photo" alt="" />
+        <div class="font-medium text-heading">
+          <div class="font-bold text-ms">{{ profilList.name }}</div>
+
+          <div class="inline-flex items-center bg-slate-100 rounded-full">
+            <select
+              id="countries"
+              class="border-0 bg-transparent focus:border-0 text-2xs px-3 py-0 rounded-full font-semibold text-slate-700"
+            >
+              <option selected>Public</option>
+              <option value="US">Followers</option>
+              <option value="CA">Only my</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <form class="w-full mx-auto mt-4" (submit)="creatPost($event)">
+        <textarea
+          [formControl]="postDiscribtion"
+          id="message"
+          rows="4"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
+          placeholder="Write your thoughts here..."
+        ></textarea>
+        <div class="border-b my-4"></div>
+        <div class="flex justify-between">
+          <input
+            (change)="setFileImg($event)"
+            class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-1/2 shadow-xs placeholder:text-body"
+            id="file_input"
+            type="file"
+          />
+
+          <button
+            type="submit"
+            class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+          >
+            Default
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

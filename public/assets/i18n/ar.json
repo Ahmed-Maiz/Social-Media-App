@@ -1,0 +1,18 @@
+{
+  "login": {
+    "title": "تسجيل الدخول إلى Route Posts",
+    "description": "قم بتسجيل الدخول واستكمل رحلتك الاجتماعية.",
+    "emailPlaceholder": "البريد الإلكتروني أو اسم المستخدم",
+    "passwordPlaceholder": "كلمة المرور",
+    "loginBtn":"تسجيل الدخول",
+    "loginButton": "تسجيل الدخول وإنشاء حساب جديد",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "emailInvalid": "يجب أن يحتوي البريد الإلكتروني على @",
+    "passwordRequired": "كلمة المرور مطلوبة"
+  },
+  "header": {
+    "title": "Route Posts",
+    "description": "تواصل مع أصدقائك والعالم من حولك على Route Posts."
+  }
+}

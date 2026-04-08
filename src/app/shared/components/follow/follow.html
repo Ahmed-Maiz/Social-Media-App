@@ -1,0 +1,25 @@
+@for (follow of lisFollow; track $index) {
+  <div class="border border-slate-200 rounded-xl p-2.5 mt-3">
+    <button
+      class="flex items-center min-w-0 gap-1 text-left transition hover:bg-slate-50 hover:w-40 rounded-lg p-1"
+    >
+      <img class="w-10 h-10 rounded-full" [src]="follow.photo" alt="" />
+      <div class="">
+        <p class="truncate text-xs font-bold text-slate-900 hover:underline">{{ follow.name }}</p>
+        <p class="truncate text-xs text-slate-500">{{ follow.username }}</p>
+      </div>
+      <button
+        (click)="followFrind(follow._id)"
+        class="flex items-center rounded-full px-3 py-1.5 text-xs font-bold transition disabled:opacity-60 cursor-pointer bg-[#e7f3ff] text-[#1877f2] hover:bg-[#d8ebff]"
+      >
+        <i class="fa fa-solid fa-plus mt-0.5 text-2xs"></i>
+        Follow
+      </button>
+    </button>
+    <div
+      class="text-[11px] font-extrabold text-slate-500 rounded-full bg-slate-100 px-2 py-0.5 w-20 mt-2"
+    >
+      <span>{{ follow.followersCount }} followers</span>
+    </div>
+  </div>
+}

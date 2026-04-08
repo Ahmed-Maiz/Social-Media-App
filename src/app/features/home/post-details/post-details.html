@@ -1,0 +1,19 @@
+<main>
+  <section>
+    <div
+      routerLink="/home"
+      class="max-w-4xl mx-auto overflow-hidden rounded-xl border-slate-200 bg-white shadow-sm my-5 p-4"
+    >
+      @if (isFlag) {
+        <i class="fa-solid fa-spinner fa-spin text-slate-900 hidden"></i>
+      }
+      <div class="cursor-pointer">
+        <img
+          class="my-4 mx-auto max-h-150 w-8xl bg-cover bg-center rounded-md"
+          [src]="post.image"
+          [alt]="post.user.name"
+        />
+      </div>
+    </div>
+  </section>
+</main>

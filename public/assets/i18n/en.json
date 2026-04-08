@@ -1,0 +1,19 @@
+{
+  "login": {
+    "title": "Log in to Route Posts",
+    "description": "Log in and continue your social journey.",
+    "emailPlaceholder": "Email or username",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Log in Create New Account",
+    "loginBtn":"log in",
+    "forgotPassword": "Forgot password?",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Email must contain @",
+    "passwordRequired": "Password is required"
+  },
+  
+  "header": {
+    "title": "Route Posts",
+    "description": "Connect with friends and the world around you on Route Posts."
+  }
+}
