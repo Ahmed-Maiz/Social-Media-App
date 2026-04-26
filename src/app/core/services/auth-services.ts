@@ -11,12 +11,10 @@ export class AuthServices {
 
   sayUp(data: any): Observable<any> {
     return this.httpClient.post(`${environment.beasUrl}/users/signup`, data);
-    console.log(data);
   }
 
   saylogin(data: any): Observable<any> {
     return this.httpClient.post(`${environment.beasUrl}/users/signin`, data);
-    console.log(data);
   }
 
   getBookMorks(): Observable<any> {

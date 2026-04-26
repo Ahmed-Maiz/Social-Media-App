@@ -66,8 +66,8 @@
                     <li>Email is required</li>
                   }
 
-                  @if (loginForms.get('email')?.getError('email')) {
-                    <li>At least @ Email</li>
+                  @if (loginForms.get('email')?.getError('pattern')) {
+                    <li>Invalid email format</li>
                   }
                 </ul>
               </div>
@@ -86,7 +86,7 @@
             <input
               formControlName="password"
               type="password"
-              id="input-group-1"
+              id="input-group-2"
               class="my-5 block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
               placeholder="Password"
             />
@@ -122,11 +122,11 @@
 
                 <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
                   @if (loginForms.get('password')?.getError('required')) {
-                    <li>Email is required</li>
+                    <li>Password is required</li>
                   }
 
-                  @if (loginForms.get('password')?.getError('password')) {
-                    <li>At least @ Email</li>
+                  @if (loginForms.get('password')?.getError('minlength')) {
+                    <li>Password must be at least 6 characters</li>
                   }
                 </ul>
               </div>

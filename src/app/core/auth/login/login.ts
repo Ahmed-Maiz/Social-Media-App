@@ -25,13 +25,15 @@ export class Login {
   messageError: string = '';
   isShow: boolean = false;
   loginForms: FormGroup = this.Fb.group({
-    email: [null, [Validators.required, Validators.email]],
-    password: [null, [Validators.required]],
+    email: [
+      null,
+      [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)],
+    ],
+    password: [null, [Validators.required, Validators.minLength(6)]],
   });
-  login: any;
 
   isLogin() {
-    if (this.loginForms.valid) {
+    if (this.loginForms.valid && !this.isShow) {
       this.isShow = true;
       this.httpClient.saylogin(this.loginForms.value).subscribe({
         next: (res) => {
@@ -39,7 +41,6 @@ export class Login {
           this.messageError = '';
           this.messageNext = res.message;
 
-          console.log(res);
           this.cor.detectChanges();
           setTimeout(() => {
             this.router.navigate(['/home']);
@@ -47,10 +48,9 @@ export class Login {
           localStorage.setItem('token', res.data.token);
         },
         error: (err) => {
-          console.log(err);
           this.isShow = false;
           this.messageNext = '';
-          this.messageError = err.error.message;
+          this.messageError = err.error?.message || 'An error occurred during login';
           this.cor.detectChanges();
         },
       });
